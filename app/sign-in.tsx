@@ -1,7 +1,11 @@
 import icons from "@/constants/icons";
 import images from "@/constants/images";
+import { login } from "@/lib/appwrite";
+import { useGlobalContext } from "@/lib/global-provider";
+import { Redirect } from "expo-router";
 import React from "react";
 import {
+  Alert,
   GestureResponderEvent,
   Image,
   ScrollView,
@@ -12,8 +16,19 @@ import {
 import { SafeAreaView } from "react-native-safe-area-context";
 
 const SignIn = () => {
-  function handleLogin(event: GestureResponderEvent): void {
-    throw new Error("Function not implemented.");
+  const { refetch, isLogged, loading } = useGlobalContext();
+
+  if (!loading && isLogged) {
+    return <Redirect href="/" />;
+  }
+
+  async function handleLogin(event: GestureResponderEvent) {
+    const result = await login();
+    if (result) {
+      refetch();
+    } else {
+      Alert.alert("Error", "Login failed.");
+    }
   }
 
   return (

@@ -17,7 +17,7 @@ client
 export const avatar = new Avatars(client);
 export const account = new Account(client);
 
-export async function login(email: string, password: string) {
+export async function login(): Promise<boolean> {
   try {
     const redirectUri = Linking.createURL("/");
     const response = await account.createOAuth2Token(
