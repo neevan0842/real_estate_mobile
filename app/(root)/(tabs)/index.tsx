@@ -1,20 +1,14 @@
-import { Link } from "expo-router";
 import { Text, View } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function Index() {
   return (
-    <View
-      style={{
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
-      <Text className="text-2xl bg-red-300">Welcome to restate</Text>
-      <Link href="/sign-in">Sign In</Link>
-      <Link href="/explore">Explore</Link>
-      <Link href="/profile">Profile</Link>
-      <Link href="/properties/123">Property 123</Link>
-    </View>
+    <SafeAreaView className="bg-white h-full">
+      <View className="flex items-center justify-center h-full">
+        <Text className="text-3xl font-rubik-extrabold ">
+          Welcome to restate
+        </Text>
+      </View>
+    </SafeAreaView>
   );
 }
