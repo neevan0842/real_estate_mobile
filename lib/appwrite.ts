@@ -88,12 +88,12 @@ export async function getCurrentUser() {
   }
 }
 
-export async function getLatestProperties(limit: number = 10) {
+export async function getLatestProperties() {
   try {
     const response = await databases.listDocuments(
       config.databaseId!,
       config.propertiesCollectionId!,
-      [Query.orderDesc("$createdAt"), Query.limit(limit)]
+      [Query.orderDesc("$createdAt"), Query.limit(10)]
     );
     return response.documents;
   } catch (error: any) {
@@ -113,7 +113,7 @@ export async function getProperties({
 }) {
   try {
     const buildQuery = [Query.orderDesc("$createdAt")];
-    if (filter) {
+    if (filter && filter !== "All") {
       buildQuery.push(Query.equal("type", filter));
     }
     if (query) {
