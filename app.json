@@ -15,7 +15,8 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.neevan0842.restate"
     },
     "web": {
       "bundler": "metro",
@@ -49,6 +50,12 @@
     ],
     "experiments": {
       "typedRoutes": true
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "d10c7129-22d1-4f27-92e9-e02fde2c8c42"
+      }
     }
   }
 }
