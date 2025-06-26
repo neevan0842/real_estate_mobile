@@ -6,6 +6,7 @@ import {
   Client,
   Databases,
   OAuthProvider,
+  Query,
 } from "react-native-appwrite";
 
 export const config = {
@@ -84,5 +85,57 @@ export async function getCurrentUser() {
   } catch (e: any) {
     console.error("Failed to get current user:", e.message);
     return null;
+  }
+}
+
+export async function getLatestProperties(limit: number = 10) {
+  try {
+    const response = await databases.listDocuments(
+      config.databaseId!,
+      config.propertiesCollectionId!,
+      [Query.orderDesc("$createdAt"), Query.limit(limit)]
+    );
+    return response.documents;
+  } catch (error: any) {
+    console.error("Failed to get latest properties:", error.message);
+    return [];
+  }
+}
+
+export async function getProperties({
+  filter,
+  query,
+  limit,
+}: {
+  filter?: string;
+  query?: string;
+  limit?: number;
+}) {
+  try {
+    const buildQuery = [Query.orderDesc("$createdAt")];
+    if (filter) {
+      buildQuery.push(Query.equal("type", filter));
+    }
+    if (query) {
+      buildQuery.push(
+        Query.or([
+          Query.search("name", query),
+          Query.search("address", query),
+          Query.search("type", query),
+        ])
+      );
+    }
+    if (limit) {
+      buildQuery.push(Query.limit(limit));
+    }
+    const response = await databases.listDocuments(
+      config.databaseId!,
+      config.propertiesCollectionId!,
+      buildQuery
+    );
+    return response.documents;
+  } catch (error: any) {
+    console.error("Failed to get properties:", error.message);
+    return [];
   }
 }
