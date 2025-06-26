@@ -3,6 +3,7 @@ import Filters from "@/components/Filters";
 import NoResults from "@/components/NoResults";
 import Search from "@/components/Search";
 import icons from "@/constants/icons";
+import images from "@/constants/images";
 import { getLatestProperties, getProperties } from "@/lib/appwrite";
 import { useGlobalContext } from "@/lib/global-provider";
 import { useAppwrite } from "@/lib/useAppwrite";
@@ -72,10 +73,10 @@ export default function Index() {
         }
         ListHeaderComponent={
           <View className="px-5">
-            <View className="flex flex-row items-center justify-between my-3 mx-1">
+            <View className="flex flex-row items-center justify-between mt-3 mx-1">
               <View className="flex flex-row items-center ">
                 <Image
-                  source={{ uri: user!.avatar }}
+                  source={images.avatar}
                   className="size-12 rounded-full"
                 />
                 <View className="flex flex-col ml-3 justify-center">

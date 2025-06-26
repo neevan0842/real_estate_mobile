@@ -1,5 +1,6 @@
 import { settings } from "@/constants/data";
 import icons from "@/constants/icons";
+import images from "@/constants/images";
 import { logout } from "@/lib/appwrite";
 import { useGlobalContext } from "@/lib/global-provider";
 import React from "react";
@@ -77,7 +78,7 @@ const Profile = () => {
         <View className="flex flex-row justify-center mt-5">
           <View className="flex flex-col items-center">
             <Image
-              source={{ uri: user?.avatar }}
+              source={images.avatar}
               resizeMode="cover"
               className="size-44 rounded-full relative"
             />

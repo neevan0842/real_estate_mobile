@@ -139,3 +139,17 @@ export async function getProperties({
     return [];
   }
 }
+
+export async function getPropertyById({ id }: { id: string }) {
+  try {
+    const response = await databases.getDocument(
+      config.databaseId!,
+      config.propertiesCollectionId!,
+      id
+    );
+    return response;
+  } catch (error: any) {
+    console.error("Failed to get property by ID:", error.message);
+    return null;
+  }
+}

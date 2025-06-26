@@ -31,7 +31,7 @@ const Filters = () => {
           onPress={() => handleCategoryChange(item.category)}
           className={`flex flex-col items-start px-4 py-2 rounded-full bg-white mx-1 ${
             selectedCategory === item.category
-              ? "bg-blue-600"
+              ? "bg-blue-700"
               : "border bg-primary-100 border-primary-200"
           }`}
         >
