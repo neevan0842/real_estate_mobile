@@ -9,6 +9,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 export default function Index() {
   return (
     <SafeAreaView className="bg-white h-full">
+      {/* <Button title="Seed" onPress={seed} /> */}
       <Animated.FlatList
         data={[1, 2, 3, 4, 5]}
         renderItem={() => <Card />}
