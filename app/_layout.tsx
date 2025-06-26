@@ -4,6 +4,7 @@ import * as SplashScreen from "expo-splash-screen";
 import { useEffect } from "react";
 
 import GlobalProvider from "@/lib/global-provider";
+import { StatusBar } from "react-native";
 import "./global.css";
 
 export default function RootLayout() {
@@ -28,6 +29,7 @@ export default function RootLayout() {
 
   return (
     <GlobalProvider>
+      <StatusBar barStyle="dark-content" backgroundColor="white" />
       <Stack screenOptions={{ headerShown: false }} />
     </GlobalProvider>
   );
